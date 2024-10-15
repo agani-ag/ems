@@ -1,0 +1,59 @@
+<odoo>
+    <!-- Meter_con EBM -->
+    <data>
+
+<!-- Meter_con EBM Form -->
+        <record id="meter_con_ebm_form" model="ir.ui.view">
+            <field name="name">meter.con.ebm.form</field>
+            <field name="model">meter.con.ebm</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <group>
+                         <group>
+                            <field name="name"/>
+                            <field name="desc"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+
+<!-- Meter_con EBM Tree -->
+        <record id="meter_con_ebm_tree" model="ir.ui.view">
+            <field name="name">meter.con.ebm.tree</field>
+            <field name="model">meter.con.ebm</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+<!-- Meter_con EBM Search -->
+        <record id="meter_con_ebm_search" model="ir.ui.view">
+            <field name="name">meter.con.ebm.search</field>
+            <field name="model">meter.con.ebm</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <!-- Filters -->
+                </search>
+            </field>
+        </record>
+
+        <record id="meter_con_ebm_action" model="ir.actions.act_window">
+            <field name="name">Meter - Connection</field>
+            <field name="res_model">meter.con.ebm</field>
+            <field name="view_mode">tree,form,search</field>
+        </record>
+
+        <menuitem id="meter_con_ebm_menu"
+                  name="Meter - Connection"
+                  parent="meter_ebm"
+                  action="meter_con_ebm_action"
+                  sequence="3"/>
+                     
+    </data>
+</odoo>

@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+        <!-- Main Menu -->
+        <menuitem id="ebm_mainmenu"
+                  name="EBM"
+                  web_icon="ebm,static/description/icon.png"
+                  sequence="1"/>
+
+        <!-- Sub Menu -->
+        <menuitem id="profile_ebm"
+                  name="Profiles"
+                  parent="ebm_mainmenu"
+                  sequence="2"/>
+
+        <menuitem id="meter_ebm"
+                  name="Meter"
+                  parent="ebm_mainmenu"
+                  sequence="3"
+                  groups="base.group_erp_manager"/>
+
+        <menuitem id="config_ebm"
+                  name="Config"
+                  parent="ebm_mainmenu"
+                  sequence="4"
+                  groups="base.group_erp_manager"/>
+
+        <menuitem id="acc_ebm"
+                  name="Accounts"
+                  parent="ebm_mainmenu"
+                  sequence="5"
+                  groups="base.group_erp_manager"/>
+
+        <menuitem id="reprt_ebm"
+                  name="Report"
+                  parent="ebm_mainmenu"
+                  sequence="6"/>
+
+    </data>
+</odoo>
+
+

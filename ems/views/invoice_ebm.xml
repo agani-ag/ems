@@ -1,0 +1,77 @@
+<odoo>
+    <data>
+<!-- Invoice Profile-->
+        <record id="invoice_ebm_form" model="ir.ui.view">
+            <field name="name">invoice.ebm.form</field>
+            <field name="model">invoice.ebm</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                            <button name="due_update_bt" type="object" string="Due Amount" invisible="0"/>
+                            <button name="invoice_print" type="object" string="Print"/>
+                            <field name="status" widget="statusbar" statusbar_visible="Not Paid,Paid,On Due"/>
+                        </header>
+                    <sheet>
+                      <group>
+                         <group>
+                            <field name="invoice_id"/>
+                            <field name="invoice_date"/>
+                            <field name="due_date"/>
+                            <field name="customer_id"/>
+                            <field name="tariff_id"/>
+                            <field name="meter_id"/>
+                            <field name="amount" invisible="0"/>
+                            <field name="due_amount"/>
+                            <field name="total_amount" invisible="1"/>
+                            <field name="status" invisible="0"/>
+                         </group>
+                    </group>
+                    <notebook>
+                        <page string="Payment">
+                            <field name="payment_ids">
+                                <tree>
+                                    <field name="payment_id" readonly='True' string="Reference Number"/>
+                                    <field name="payment_date"/>
+                                    <field name="amount"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="invoice_ebm_tree" model="ir.ui.view">
+            <field name="name">invoice.ebm.tree</field>
+            <field name="model">invoice.ebm</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="invoice_id" string="Invoice Number"/>
+                    <field name="invoice_date"/>
+                    <field name="customer_id"/>
+                    <field name="due_date"/>
+                    <field name="meter_id"/>
+                    <field name="amount"/>
+                    <field name="due_amount"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+         <record id="invoice_ebm_action" model="ir.actions.act_window">
+            <field name="name">Invoice</field>
+            <field name="res_model">invoice.ebm</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="invoice_ebm_menu"
+                  name="Invoice"
+                  parent="acc_ebm"
+                  action="invoice_ebm_action"
+                  sequence="1"
+                  groups=""/>
+    </data>
+
+</odoo>

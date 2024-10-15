@@ -1,0 +1,73 @@
+<odoo>
+    <!-- reading EBM -->
+    <data>
+
+<!-- reading EBM Form -->
+        <record id="reading_ebm_form" model="ir.ui.view">
+            <field name="name">reading.ebm.form</field>
+            <field name="model">reading.ebm</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <group>
+                         <group>
+                            <field name="reading_id"/>
+                            <field name="tariff_id"/>
+                            <field name="reading_date" readonly="1"/>
+                            <field name="previous_value" readonly="1"/>
+                            <field name="reading_value"/>
+                            <field name="usage_value"/>
+                            <field name="pay_amount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+
+<!-- reading EBM Tree -->
+        <record id="reading_ebm_tree" model="ir.ui.view">
+            <field name="name">reading.ebm.tree</field>
+            <field name="model">reading.ebm</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="reading_id"/>
+                    <field name="tariff_id"/>
+                    <field name="reading_date"/>
+                    <field name="reading_value"/>
+                    <field name="previous_value"/>
+                    <field name="usage_value"/>
+                    <field name="pay_amount"/>
+                </tree>
+            </field>
+        </record>
+
+<!-- reading EBM Search -->
+        <record id="reading_ebm_search" model="ir.ui.view">
+            <field name="name">reading.ebm.search</field>
+            <field name="model">reading.ebm</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="reading_id"/>
+                    <field name="tariff_id"/>
+                    <field name="reading_date"/>
+                    <field name="usage_value"/>
+                    <!-- Filters -->
+                </search>
+            </field>
+        </record>
+
+        <record id="reading_ebm_action" model="ir.actions.act_window">
+            <field name="name">Reading</field>
+            <field name="res_model">reading.ebm</field>
+            <field name="view_mode">tree,form,search</field>
+        </record>
+
+        <menuitem id="reading_ebm_menu"
+                  name="Reading"
+                  parent="meter_ebm"
+                  action="reading_ebm_action"
+                  sequence="4"/>
+                     
+    </data>
+</odoo>

@@ -1,0 +1,83 @@
+<odoo>
+    <!-- district EBM -->
+    <data>
+
+<!-- district EBM Form -->
+        <record id="district_ebm_form" model="ir.ui.view">
+            <field name="name">district.ebm.form</field>
+            <field name="model">district.ebm</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <header>
+                            <button name="nav_city" type="object" string="City" class="oe_stat_button"
+                                    icon="fa-plane">
+                                <field name="city_count" widget="statinfo"/>
+                            </button>
+                        </header>
+                    <group>
+                         <group>
+                            <field name="district_id" invisible="1"/>
+                            <field name="name"/>
+                            <field name="state" readonly="1"/>
+                            <field name="country" readonly="1"/>
+                            <field name="uq_code" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="City">
+                            <field name="city_ids">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+<!-- district EBM Tree -->
+        <record id="district_ebm_tree" model="ir.ui.view">
+            <field name="name">district.ebm.tree</field>
+            <field name="model">district.ebm</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="district_id" optional="True"/>
+                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="country"/>
+                    <field name="city_count" optional="1"/>
+                    <field name="uq_code" optional="1"/>
+                </tree>
+            </field>
+        </record>
+
+<!-- district EBM Search -->
+        <record id="district_ebm_search" model="ir.ui.view">
+            <field name="name">district.ebm.search</field>
+            <field name="model">district.ebm</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="district_id"/>
+                    <field name="name"/>
+                    <!-- Filters -->
+                </search>
+            </field>
+        </record>
+
+        <record id="district_ebm_action" model="ir.actions.act_window">
+            <field name="name">District</field>
+            <field name="res_model">district.ebm</field>
+            <field name="view_mode">tree,form,search</field>
+        </record>
+
+        <menuitem id="district_ebm_menu"
+                  name="District"
+                  parent="config_ebm"
+                  action="district_ebm_action"
+                  sequence="1"/>
+                     
+    </data>
+</odoo>

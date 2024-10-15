@@ -1,0 +1,61 @@
+<odoo>
+    <!-- Meter_Type EBM -->
+    <data>
+
+<!-- Meter_Type EBM Form -->
+        <record id="meter_type_ebm_form" model="ir.ui.view">
+            <field name="name">meter.type.ebm.form</field>
+            <field name="model">meter.type.ebm</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <group>
+                         <group>
+                            <field name="name"/>
+                            <field name="desc"/>
+                            <field name="extra_price" string="Extra Price % "/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+
+<!-- Meter_Type EBM Tree -->
+        <record id="meter_type_ebm_tree" model="ir.ui.view">
+            <field name="name">meter.type.ebm.tree</field>
+            <field name="model">meter.type.ebm</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="extra_price"/>
+                </tree>
+            </field>
+        </record>
+
+<!-- Meter_Type EBM Search -->
+        <record id="meter_type_ebm_search" model="ir.ui.view">
+            <field name="name">meter.type.ebm.search</field>
+            <field name="model">meter.type.ebm</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <!-- Filters -->
+                </search>
+            </field>
+        </record>
+
+        <record id="meter_type_ebm_action" model="ir.actions.act_window">
+            <field name="name">Meter - Type</field>
+            <field name="res_model">meter.type.ebm</field>
+            <field name="view_mode">tree,form,search</field>
+        </record>
+
+        <menuitem id="meter_type_ebm_menu"
+                  name="Meter - Type"
+                  parent="meter_ebm"
+                  action="meter_type_ebm_action"
+                  sequence="2"/>
+                     
+    </data>
+</odoo>

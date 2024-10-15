@@ -1,0 +1,71 @@
+<odoo>
+    <!-- tariff EBM -->
+    <data>
+
+<!-- tariff EBM Form -->
+        <record id="tariff_ebm_form" model="ir.ui.view">
+            <field name="name">tariff.ebm.form</field>
+            <field name="model">tariff.ebm</field>
+            <field name="arch" type="xml">
+                <form><sheet>
+                    <group>
+                         <group>
+                            <field name="tariff_id" readonly="1"/>
+                            <field name="start_date" required="1"/>
+                            <field name="end_date" required="1"/>
+                            </group><group></group>
+                            <group string="Price - Per Unit">
+                            <field name="dom_price" string="Domestic Price"/>
+                            <field name="com_price" string="Commercial Price"/>
+                            <field name="due_price" string="Penalty Per Day"/>
+                        </group>
+                    </group>
+                </sheet></form>
+            </field>
+        </record>
+
+<!-- tariff EBM Tree -->
+        <record id="tariff_ebm_tree" model="ir.ui.view">
+            <field name="name">tariff.ebm.tree</field>
+            <field name="model">tariff.ebm</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="tariff_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="dom_price" string="Domestic Price"/>
+                    <field name="com_price" string="Commercial Price"/>
+                </tree>
+            </field>
+        </record>
+
+<!-- tariff EBM Search -->
+        <record id="tariff_ebm_search" model="ir.ui.view">
+            <field name="name">tariff.ebm.search</field>
+            <field name="model">tariff.ebm</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="tariff_id" invisible="True"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="dom_price" string="Domestic Price"/>
+                    <field name="com_price" string="Commercial Price"/>
+                    <!-- Filters -->
+                </search>
+            </field>
+        </record>
+
+        <record id="tariff_ebm_action" model="ir.actions.act_window">
+            <field name="name">Tariff</field>
+            <field name="res_model">tariff.ebm</field>
+            <field name="view_mode">tree,form,search</field>
+        </record>
+
+        <menuitem id="tariff_ebm_menu"
+                  name="Tariff"
+                  parent="meter_ebm"
+                  action="tariff_ebm_action"
+                  sequence="5"/>
+                     
+    </data>
+</odoo>

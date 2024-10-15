@@ -1,0 +1,64 @@
+<odoo>
+    <!-- Pincode EBM -->
+    <data>
+
+<!-- Pincode EBM Form -->
+        <record id="pincode_ebm_form" model="ir.ui.view">
+            <field name="name">pincode.ebm.form</field>
+            <field name="model">pincode.ebm</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                         <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="city_id"/>
+                            <field name="uq_code" invisible="1"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+<!-- Pincode EBM Tree -->
+        <record id="pincode_ebm_tree" model="ir.ui.view">
+            <field name="name">pincode.ebm.tree</field>
+            <field name="model">pincode.ebm</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="city_id"/>
+                    <field name="uq_code" optional="1"/>
+                </tree>
+            </field>
+        </record>
+
+<!-- pincode EBM Search -->
+        <record id="pincode_ebm_search" model="ir.ui.view">
+            <field name="name">pincode.ebm.search</field>
+            <field name="model">pincode.ebm</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="city_id"/>
+                    <!-- Filters -->
+                </search>
+            </field>
+        </record>
+
+        <record id="pincode_ebm_action" model="ir.actions.act_window">
+            <field name="name">Pincode</field>
+            <field name="res_model">pincode.ebm</field>
+            <field name="view_mode">tree,form,search</field>
+        </record>
+
+        <menuitem id="pincode_ebm_menu"
+                  name="Pincode"
+                  parent="config_ebm"
+                  action="pincode_ebm_action"
+                  sequence="3"/>
+                     
+    </data>
+</odoo>

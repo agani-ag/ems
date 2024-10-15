@@ -1,0 +1,85 @@
+<odoo>
+    <!-- Meter EBM -->
+    <data>
+
+<!-- Meter EBM Form -->
+        <record id="meter_ebm_form" model="ir.ui.view">
+            <field name="name">meter.ebm.form</field>
+            <field name="model">meter.ebm</field>
+            <field name="arch" type="xml">
+                <form><sheet>
+                    <group>
+                            <h1><field name="meter_num" readonly="True"/></h1>
+                                <group></group>
+                         <group>
+                            <field name="customer_id" readonly="1"/>
+                            <field name="meter_type"/>
+                            <field name="meter_con"/>
+                            <field name="instl_date" readonly="1"/>
+                        </group>
+                        <group string="Meter Description">
+                            <field name="meter_desc" readonly="1"/>
+                            <field name="con_desc" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Readings">
+                            <field name="reading_ids">
+                                <tree>
+                                    <field name="reading_id"/>
+                                    <field name="tariff_id"/>
+                                    <field name="reading_date"/>
+                                    <field name="previous_value"/>
+                                    <field name="reading_value"/>
+                                    <field name="usage_value"/>
+                                    <field name="pay_amount"/>
+                                    <button name="update_invoice" type="object" string="Invoice" class="btn-success"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet></form>
+            </field>
+        </record>
+
+<!-- meter EBM Tree -->
+        <record id="meter_ebm_tree" model="ir.ui.view">
+            <field name="name">meter.ebm.tree</field>
+            <field name="model">meter.ebm</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="meter_num"/>
+                    <field name="customer_id"/>
+                    <field name="meter_type"/>
+                    <field name="meter_con"/>
+                </tree>
+            </field>
+        </record>
+
+<!-- meter EBM Search -->
+        <record id="meter_ebm_search" model="ir.ui.view">
+            <field name="name">meter.ebm.search</field>
+            <field name="model">meter.ebm</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="meter_num" invisible="True"/>
+                    <field name="customer_id"/>
+                    <!-- Filters -->
+                </search>
+            </field>
+        </record>
+
+        <record id="meter_ebm_action" model="ir.actions.act_window">
+            <field name="name">Meter</field>
+            <field name="res_model">meter.ebm</field>
+            <field name="view_mode">tree,form,search</field>
+        </record>
+
+        <menuitem id="meter_ebm_menu"
+                  name="Meter"
+                  parent="ebm_mainmenu"
+                  action="meter_ebm_action"
+                  sequence="1"/>
+                     
+    </data>
+</odoo>

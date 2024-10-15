@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- EBM Date Report -->
+
+    <record id="duedate_ebm_report_action" model="ir.actions.report">
+        <field name="name">Duedate Date Report</field>
+        <field name="model">wizard.invoice.ebm.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ebm.duedate_report_template</field>
+        <field name="report_file">ebm.duedate_report_template</field>
+    </record>
+
+    <template id="duedate_report_template">
+        <t t-call="web.basic_layout">
+            <center>
+                <h1>Invoice DueDate Report</h1>
+                <h6><t t-esc="from"/> :<t t-esc="to"/></h6>
+                <br/>
+            </center>
+            <table class="table table-striped">
+                    <thead>
+                        <th>S.No</th>
+                        <th>Name</th>
+                        <th>Meter</th>
+                        <th>Status</th>
+                        <th>Amount</th>
+                        <th>Due Date</th>
+                    </thead>
+                    <tbody>
+                        <t t-set="count" t-value="1"/>
+                        <t t-set="total" t-value="0"/>
+                        <t t-set="d_total" t-value="0"/>
+                        <t t-set="invoice_ids" t-value="invoice_records"/>
+                        <t t-foreach="invoice_ids" t-as="invoice_id">
+                            <tr align="center">
+                                <td><t t-esc="count"/></td>
+                                <td><t t-esc="invoice_id.customer_id.name"/></td>
+                                <td><t t-esc="invoice_id.meter_id.meter_num"/></td>
+                                <td><t t-esc="invoice_id.status"/></td>
+                                <td>₹<t t-esc="invoice_id.amount"/></td>
+                                <td>₹<t t-esc="invoice_id.due_amount"/></td>
+                            </tr>
+                            <t t-set="count" t-value="count + 1"/>
+                            <t t-set="total" t-value="invoice_id.amount + total"/>
+                            <t t-set="d_total" t-value="invoice_id.due_amount + d_total"/>
+                        </t>
+                        <tr>
+                            <td colspan="4" align="right"><h6><b>Totals</b></h6></td>
+                            <td align="center"><h6><b>₹<t t-esc="total"/></b></h6></td>
+                            <td align="center"><h6><b>₹<t t-esc="d_total"/></b></h6></td>
+                        </tr>
+                        <tr>
+                            <t t-set="f_total" t-value="total + d_total"/>
+                            <td colspan="4" align="right"><h6><b>Totals Amount</b></h6></td>
+                            <td colspan="2" align="center"><h6><b>₹<t t-esc="f_total"/></b></h6></td>
+                        </tr>
+                    </tbody>
+                </table>
+        </t>
+    </template>
+
+
+</odoo>

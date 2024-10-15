@@ -1,0 +1,79 @@
+<odoo>
+    <data>
+        <record id="mail_invoice_ebm" model="mail.template">
+            <field name="name">Reading Invoice</field>
+            <field name="model_id" ref="ebm.model_reading_ebm"/>
+            <field name="subject">EB Bill</field>
+            <field name="email_from">aganiag22@gmail.com</field>
+            <field name="email_to">{{object.meter_id.customer_id.email}}</field>
+            <field name="body_html" type="html">
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 0;
+                        background-color: #f0f0f0;
+                        color: #333;
+                    }
+                    .container {
+                        width: 80%;
+                        max-width: 1200px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        background: #fff;
+                        border-radius: 8px;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    }
+                    h1 {
+                        color: #333;
+                        text-align: center;
+                        font-size: 2.5em;
+                        margin-bottom: 0.5em;
+                    }
+                    p {
+                        line-height: 1.6;
+                        margin: 0 0 1em;
+                    }
+                    a {
+                        color: #3498db;
+                        text-decoration: none;
+                    }
+                    a:hover {
+                        text-decoration: underline;
+                    }
+                    .button {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        margin: 10px 0;
+                        background-color: #3498db;
+                        color: #fff;
+                        text-align: center;
+                        border-radius: 5px;
+                        text-decoration: none;
+                        font-weight: bold;
+                    }
+                    .button:hover {
+                        background-color: #2980b9;
+                    }
+                    th, td 
+                        {
+                            padding: 8px;
+                            text-align: Center;
+                            border-bottom: 1px solid #ddd;
+                        }
+                </style>
+                <div class="container">
+                    <h1>TamilNadu Electricity Billing</h1>
+                    <t t-foreach="object" t-as="rec">
+                        <table border="2px" width="80%">
+                            <tr><td>Meter Number:</td><td><t t-esc="rec.meter_id.meter_num"/></td></tr>
+                            <tr><td>Name:</td><td><t t-esc="rec.meter_id.customer_id.name"/></td></tr>
+                            <tr><td>Amount:</td><td>₹<t t-esc="rec.pay_amount"/></td></tr>
+                            <tr><td>Due Date:</td><td><t t-esc="rec.reading_date"/></td></tr>
+                        </table>
+                    </t>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

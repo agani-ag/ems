@@ -1,0 +1,70 @@
+<odoo>
+    <data>
+<!-- Payment ebm -->
+        <record id="payment_ebm_form" model="ir.ui.view">
+            <field name="name">payment.ebm.form</field>
+            <field name="model">payment.ebm</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                         <group>
+                            <field name="payment_id" readonly='True'/>
+                            <field name="payment_date"/>
+                            <field name="amount"/>
+                            <field name="invoice_id" readonly='True'/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+<!--        Payment Tree View-->
+
+        <record id="payment_ebm_tree" model="ir.ui.view">
+            <field name="name">payment.ebm.tree</field>
+            <field name="model">payment.ebm</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="payment_id" readonly='True'/>
+                    <field name="payment_date"/>
+                    <field name="amount"/>
+                    <field name="invoice_id"/>
+                </tree>
+            </field>
+        </record>
+
+<!--      Payment Search Views-->
+
+        <record id="payment_ebm_search" model="ir.ui.view">
+            <field name="name">payment.ebm.search</field>
+            <field name="model">payment.ebm</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="payment_id"/>
+                    <field name="payment_date"/>
+                    <field name="amount"/>
+                    <field name="invoice_id"/>
+<!--                    Filters-->
+
+<!--                    Group By-->
+                    <group expand="1" string="Group By">
+                        <filter name='Invoice' string="Invoice" context="{'group_by': 'invoice_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+         <record id="payment_ebm_action" model="ir.actions.act_window">
+            <field name="name">Payment</field>
+            <field name="res_model">payment.ebm</field>
+            <field name="view_mode">tree,form,search</field>
+        </record>
+
+        <menuitem id="payment_ebm_menu"
+                  name="Payment"
+                  parent="acc_ebm"
+                  action="payment_ebm_action"
+                  sequence="2"/>
+                     
+    </data>
+</odoo>

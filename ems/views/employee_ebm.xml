@@ -1,0 +1,119 @@
+<odoo>
+    <data>
+
+<!-- Employee EBM View Form-->
+
+        <record id="employee_ebm_form" model="ir.ui.view">
+            <field name="name">employee.ebm.form</field>
+            <field name="model">employee.ebm</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Employee Details">
+                            <field name="emp_img" widget="image" class="oe_avatar"/>
+                            <group>
+                                <field name="emp_id" invisible="True"/>
+                                <field name="name"/>
+                                <field name="phone" required="True"/>
+                                <field name="email" required="True"/>
+                            </group><group></group>
+                            <group string="Address">
+                                <field name="address" string="Street"/>
+                                <field name="village"/>
+                                <field name="city_id"/>
+                                <field name="district_id"/>
+                                <field name="pincode_id" required="True"/>
+                        </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!-- Employee EBM Tree Form-->
+
+        <record id="employee_ebm_tree" model="ir.ui.view">
+            <field name="name">employee.ebm.tree</field>
+            <field name="model">employee.ebm</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="emp_id" optional="True"/>
+                    <field name="emp_img" widget="image" class="oe_avatar" width='100px' height='100px'/>
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="address"/>
+                </tree>
+            </field>
+        </record>
+
+<!-- Employee EBM Search Views-->
+
+        <record id="employee_ebm_search" model="ir.ui.view">
+            <field name="name">employee.ebm.search</field>
+            <field name="model">employee.ebm</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="emp_id"/>
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="address"/>
+                </search>
+            </field>
+        </record>
+
+<!-- Employee EBM Kanban Form-->
+
+        <record id="employee_ebm_kanban" model="ir.ui.view">
+            <field name="name">employee.ebm.kanban</field>
+            <field name="model">employee.ebm</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="address"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <div class="o_kanban_image">
+                                            <field name="emp_img" widget="image"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <ul style="text-align:Left;">
+                                        <li>
+                                            <b><field name="name"/></b>
+                                        </li>
+                                        <li><b>Email : </b>
+                                            <field name="email"/>
+                                        </li>
+                                        <li><b>address : </b>
+                                            <field name="address"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+<!-- Employee EBM Action-->
+
+         <record id="employee_ebm_action" model="ir.actions.act_window">
+            <field name="name">Employee</field>
+            <field name="res_model">employee.ebm</field>
+            <field name="view_mode">kanban,tree,form,search</field>
+        </record>
+
+        <menuitem id="employee_ebm_menu"
+                  name="Employee"
+                  parent="profile_ebm"
+                  action="employee_ebm_action"
+                  sequence="1"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,68 @@
+<odoo>
+    <!-- User EBM -->
+    <data>
+
+<!-- User EBM Form -->
+        <record id="user_ebm_form" model="ir.ui.view">
+            <field name="name">user.ebm.form</field>
+            <field name="model">user.ebm</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                         <group>
+                            <field name="user_id" invisible="True"/>
+                            <field name="name"/>
+                            <field name="phone" required="True"/>
+                            <field name="email" required="True"/>
+                            <field name="address"/>
+                            <field name="customer_id" required="True"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+<!-- User EBM Tree -->
+        <record id="user_ebm_tree" model="ir.ui.view">
+            <field name="name">user.ebm.tree</field>
+            <field name="model">user.ebm</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="user_id" optional="True"/>
+                    <field name="name"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="address"/>
+                </tree>
+            </field>
+        </record>
+
+<!-- User EBM Search -->
+        <record id="user_ebm_search" model="ir.ui.view">
+            <field name="name">user.ebm.search</field>
+            <field name="model">user.ebm</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="user_id" invisible="True"/>
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="address"/>
+                    <!-- Filters -->
+                </search>
+            </field>
+        </record>
+
+        <record id="user_ebm_action" model="ir.actions.act_window">
+            <field name="name">User</field>
+            <field name="res_model">user.ebm</field>
+            <field name="view_mode">tree,form,search</field>
+        </record>
+
+        <menuitem id="user_ebm_menu"
+                  name="User"
+                  parent="profile_ebm"
+                  action="user_ebm_action"
+                  sequence="2"/>
+                     
+    </data>
+</odoo>

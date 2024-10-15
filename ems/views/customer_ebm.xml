@@ -1,0 +1,96 @@
+<odoo>
+    <!-- Customer EBM -->
+    <data>
+
+<!-- Customer EBM Form -->
+        <record id="customer_ebm_form" model="ir.ui.view">
+            <field name="name">customer.ebm.form</field>
+            <field name="model">customer.ebm</field>
+            <field name="arch" type="xml">
+                <form><sheet>
+                    <group>
+                        <group string="Details">
+                            <field name="customer_id" invisible="True"/>
+                            <field name="name"/>
+                            <field name="phone" required="True"/>
+                            <field name="email" required="True"/>
+                        </group>
+                        <group string="Address">
+                            <field name="address" string="Street"/>
+                            <field name="village"/>
+                            <field name="city_id"/>
+                            <field name="district_id"/>
+                            <field name="pincode_id" required="True"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Meter">
+                            <field name="meter_ids">
+                                <tree editable="top">
+                                    <field name="meter_num"/>
+                                    <field name="meter_type"/>
+                                    <field name="meter_con"/>
+                                    <field name="instl_date"/>
+                                    <button name="nav_meter" type="object" string="Meter" class="btn-info"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="User">
+                            <field name="user_ids">
+                                <tree editable="botton">
+                                    <field name="name"/>
+                                    <field name="phone"/>
+                                    <field name="email"/>
+                                    <field name="address"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet></form>
+            </field>
+        </record>
+
+<!-- Customer EBM Tree -->
+        <record id="customer_ebm_tree" model="ir.ui.view">
+            <field name="name">customer.ebm.tree</field>
+            <field name="model">customer.ebm</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="customer_id" optional="True"/>
+                    <field name="name"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="address"/>
+                </tree>
+            </field>
+        </record>
+
+<!-- Customer EBM Search -->
+        <record id="customer_ebm_search" model="ir.ui.view">
+            <field name="name">customer.ebm.search</field>
+            <field name="model">customer.ebm</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="customer_id" invisible="True"/>
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="address"/>
+                    <!-- Filters -->
+                </search>
+            </field>
+        </record>
+
+        <record id="customer_ebm_action" model="ir.actions.act_window">
+            <field name="name">Customer</field>
+            <field name="res_model">customer.ebm</field>
+            <field name="view_mode">tree,form,search</field>
+        </record>
+
+        <menuitem id="customer_ebm_menu"
+                  name="Customer"
+                  parent="profile_ebm"
+                  action="customer_ebm_action"
+                  sequence="3"/>
+                     
+    </data>
+</odoo>
